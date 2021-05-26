@@ -26,6 +26,23 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List <Icon> scoreKeeper = [];
+  List<String> questions= [
+    'You can lead a cow down stairs but not upstairs',
+    'Approximately one quarter of human bones are in the feet',
+    'Buddha was born in Nepal',
+    'Aayam is Chutiya',
+    'Enjoyed It??',
+
+
+  ];
+  List<bool> answers = [
+    false,
+    false,
+    true,
+    true,
+    true,
+  ];
+  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +55,7 @@ class _QuizPageState extends State<QuizPage> {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: Center(
-                child: Text("Questions are here",
+                child: Text(questions[questionNumber ],
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25,
                 color: Colors.white,
@@ -51,7 +68,14 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: MaterialButton(onPressed: (){
+              bool correctAnswer = answers[questionNumber];
+              if(correctAnswer == true){
+                print('User got it right');
+              }else{
+                print("User got it wrong");
+              }
               setState(() {
+                questionNumber++;
                 scoreKeeper.add(Icon(Icons.check,
                   color: Colors.green,));
 
@@ -73,7 +97,14 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: MaterialButton(onPressed: (){
+              bool correctAnswer = answers[questionNumber];
+              if(correctAnswer == false){
+                print('User got it right');
+              }else{
+                print("User got it wrong");
+              }
               setState(() {
+                questionNumber++;
                 scoreKeeper.add(Icon(Icons.close,
                   color: Colors.red,));
 
