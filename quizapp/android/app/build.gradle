@@ -1,20 +1,10 @@
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
-dependencies {
-    def multidex_version = "2.0.1"
-    implementation "androidx.multidex:multidex:$multidex_version" //enter the latest version
-}
-android {
-    defaultConfig {
-        multiDexEnabled true
-    }
-}
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
 }
-
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
@@ -39,7 +29,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.fallen700.xylophone_flutter"
+        applicationId "com.fallen700.quizapp"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
